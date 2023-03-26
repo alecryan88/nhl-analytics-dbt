@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: NHL_API
+    database: NHL_ELT  
+    schema: DEV
+    tables:
+      - name: NHL_API_GAME_EVENTS

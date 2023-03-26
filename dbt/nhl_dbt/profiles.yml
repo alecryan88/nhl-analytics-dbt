@@ -1,0 +1,19 @@
+
+config-version: 2
+nhl_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: pua88554
+
+      # User/password auth
+      user: "FLYERS88"
+      password: "VampireWeekend2021"
+
+      role: "ACCOUNTADMIN"
+      database: "NHL_ELT"
+      warehouse: "NHL_ELT"
+      schema: "DEV"
+      threads: 4
+      client_session_keep_alive: False
