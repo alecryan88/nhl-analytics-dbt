@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "static_website_bucket" {
   bucket =  "www.nhleltdocs.com"
-
+  force_destroy = true
   acl    = "public-read"
 
   website {

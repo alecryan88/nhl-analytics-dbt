@@ -31,11 +31,14 @@ resource "aws_iam_policy" "ecs_service_role_policy" {
     {
         "Effect": "Allow",
         "Action": [
-            "s3:GetObject", 
-            "s3:PutObject"
+            "s3:PutObject",
+            "s3:PutObjectAcl",
+            "s3:GetObject",
+            "s3:GetObjectAcl",
+            "s3:DeleteObject"
         ],
         "Resource": [
-            "arn:aws:secretsmanager:us-east-1:647410971427:secret:nhl_elt_snowflake-KowRY3"
+            "${aws_s3_bucket.static_website_bucket.arn}/*"
         ]
     }
 
