@@ -47,7 +47,7 @@ resource "aws_ecs_task_definition" "nhl_dbt_ecs_task" {
 
 resource "aws_cloudwatch_event_rule" "dbt_run" {
   name                = "scheduled-ecs-event-rule"
-  schedule_expression = "rate(5 minutes)"
+  schedule_expression = "cron(0 11 * * ? *)"
 }
 
 resource "aws_cloudwatch_event_target" "scheduled_task" {
