@@ -17,8 +17,29 @@ resource "aws_iam_policy" "ecs_service_role_policy" {
             "logs:PutLogEvents"
         ],
         "Resource": "*"
-        }
-    ]
+        },
+
+    {
+        "Effect": "Allow",
+        "Action": [
+            "secretsmanager:GetSecretValue"
+        ],
+        "Resource": [
+            "arn:aws:secretsmanager:us-east-1:647410971427:secret:nhl_elt_snowflake-KowRY3"
+        ]
+    },
+    {
+        "Effect": "Allow",
+        "Action": [
+            "s3:GetObject", 
+            "s3:PutObject"
+        ],
+        "Resource": [
+            "arn:aws:secretsmanager:us-east-1:647410971427:secret:nhl_elt_snowflake-KowRY3"
+        ]
+    }
+
+  ]
 }
   EOF
 }

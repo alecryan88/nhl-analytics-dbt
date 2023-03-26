@@ -10,7 +10,23 @@ ${jsonencode([
                "awslogs-stream-prefix": "ecs"
             }
          },
-      "essential": true
+      "essential": true,
+      "secrets": [
+                {
+                    "valueFrom": "${secret_arn}:SNOWFLAKE_ACCOUNT::",
+                    "name": "SNOWFLAKE_ACCOUNT"
+                },
+
+                 {
+                    "valueFrom": "${secret_arn}:SNOWFLAKE_USER::",
+                    "name": "SNOWFLAKE_USER"
+                },
+
+                 {
+                    "valueFrom": "${secret_arn}:SNOWFLAKE_PASSWORD::",
+                    "name": "SNOWFLAKE_PASSWORD"
+                }
+            ],
     }
   ]
 )}

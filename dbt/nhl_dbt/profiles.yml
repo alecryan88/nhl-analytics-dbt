@@ -5,11 +5,11 @@ nhl_dbt:
   outputs:
     dev:
       type: snowflake
-      account: pua88554
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
 
       # User/password auth
-      user: "FLYERS88"
-      password: "VampireWeekend2021"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
 
       role: "ACCOUNTADMIN"
       database: "NHL_ELT"

@@ -1,3 +1,14 @@
+resource "aws_s3_bucket" "static_website_bucket" {
+  bucket =  "www.nhleltdocs.com"
+
+  acl    = "public-read"
+
+  website {
+    index_document = "index.html"
+  }
+
+}
+
 resource "aws_ecr_repository" "dbt_model_image_repo" {
   name                 = "dbt_model_image_repo"
   image_tag_mutability = "MUTABLE"
@@ -8,6 +19,26 @@ resource "aws_ecr_repository" "dbt_model_image_repo" {
   }
 }
 
+resource "aws_s3_bucket_policy" "static_website_bucket_policy" {
+  bucket = aws_s3_bucket.static_website_bucket.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid = "PublicReadGetObject"
+        Effect = "Allow"
+        Principal = "*"
+        Action = [
+          "s3:GetObject"
+        ]
+        Resource = [
+          "${aws_s3_bucket.static_website_bucket.arn}/*"
+        ]
+      }
+    ]
+  })
+}
 
 resource "aws_ecs_cluster" "dbt_ecs_cluster" {
   name = "dbt_ecs_cluster"
@@ -35,7 +66,8 @@ resource "aws_ecs_task_definition" "nhl_dbt_ecs_task" {
     name             = "dbt_task",
     image            = "${aws_ecr_repository.dbt_model_image_repo.repository_url}:latest",
     cloudwatch_group = "/ecs/dbt_tasks",
-    aws_region       = var.aws_region
+    aws_region       = var.aws_region,
+    secret_arn = "arn:aws:secretsmanager:us-east-1:647410971427:secret:nhl_elt_snowflake-KowRY3"
   })
 
   depends_on = [
