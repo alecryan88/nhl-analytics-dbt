@@ -9,3 +9,11 @@
 4. The task fetches secrets from AWS secrets manager and sets as ENV variables in container 
 5. The models  are transformed in the ECS task
 6. The artifacts are copied to an S3 bucket for documentation site hosting
+
+
+## Architecture
+Below is a diagram showing the high-level architecture for this project:
+
+
+
+<img src="images/dbt_pipeline.png" width=100% height=50%>
