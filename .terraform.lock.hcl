@@ -6,6 +6,7 @@ provider "registry.terraform.io/hashicorp/aws" {
   constraints = "4.48.0"
   hashes = [
     "h1:t/R3B4mibkp2zLer4MfhFbwHAVLAq71mJz4nwdUydBE=",
+    "h1:t4+ZVZIg8DbyFTMy4sZcvb7FULMG3mpg9Woh/2IaQ+o=",
     "zh:08f5e3c5256a4fbd5c988863d10e5279172b2470fec6d4fb13c372663e7f7cac",
     "zh:2a04376b7fa84681bd2938973c7d0822c8c0f0656a4e7661a2f50ac4d852d4a3",
     "zh:30d6cdf321aaba874934cbde505333d89d172d8d5ffcf40b6e66626c57bc6ab2",
@@ -28,6 +29,7 @@ provider "registry.terraform.io/kreuzwerker/docker" {
   version     = "3.0.1"
   constraints = "3.0.1"
   hashes = [
+    "h1:klHEnyIJInoaRJsWkNOVXYKg87/oUmV/uT6SLa38OmQ=",
     "h1:zdKNQX3dhcV+sPOG4kwK9ll6nthKPPIUTIMF3Xav3d8=",
     "zh:02f60126ca16b344092df3c315296bf1a216c3b2a68eddb3c89fdfa5ea826118",
     "zh:0d2ee9624a54dbc10538b0c4e296348641b9bfba1354b3f872e43f7ec69a75f2",
@@ -50,6 +52,7 @@ provider "registry.terraform.io/snowflake-labs/snowflake" {
   version     = "0.52.0"
   constraints = "0.52.0"
   hashes = [
+    "h1:D7hZyLreo2dno/Eil/UScmsMLq3DZTZEJz/1g1fyYwo=",
     "h1:icECJDRWGxmnyvHEoeftOKM9XHexhwGA7TDshi/Xd1o=",
     "zh:1ab7ff6b00821cb5df4ee22cd1d76fb1638bb865195314c199dffdd2a247ecee",
     "zh:2fb7ba8a1452385708efe2f748515a21455034bd9e1b9597b5c6f46ea6c75c15",

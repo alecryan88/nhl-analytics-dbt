@@ -70,6 +70,11 @@ resource "aws_ecs_task_definition" "nhl_dbt_ecs_task" {
     secret_arn = "arn:aws:secretsmanager:us-east-1:647410971427:secret:nhl_elt_snowflake-KowRY3"
   })
 
+  runtime_platform {
+    operating_system_family = "LINUX"
+    cpu_architecture        = "ARM64"
+  }
+
   depends_on = [
     docker_registry_image.dbt_model_ecr_image
   ]
@@ -80,6 +85,7 @@ resource "aws_ecs_task_definition" "nhl_dbt_ecs_task" {
 resource "aws_cloudwatch_event_rule" "dbt_run" {
   name                = "scheduled-ecs-event-rule"
   schedule_expression = "cron(0 11 * * ? *)"
+
 }
 
 resource "aws_cloudwatch_event_target" "scheduled_task" {
@@ -97,4 +103,8 @@ resource "aws_cloudwatch_event_target" "scheduled_task" {
       security_groups  = [aws_security_group.dbt_vpc_security_group.id]
     }
   }
+
+  depends_on = [
+    aws_cloudwatch_event_rule.dbt_run
+  ]
 }

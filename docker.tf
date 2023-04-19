@@ -1,4 +1,3 @@
-#model image is used to run dbt w/ ECS
 # This is for ECR Model Image
 resource "docker_image" "dbt_model_image" {
   name = "${aws_ecr_repository.dbt_model_image_repo.repository_url}:latest"
@@ -9,6 +8,7 @@ resource "docker_image" "dbt_model_image" {
   force_remove = true
   triggers ={
     dockerfile = md5(file("${path.module}/dbt/Dockerfile"))
+    dbt_sh = md5(file("${path.module}/dbt/dbt.sh"))
   }
 }
 

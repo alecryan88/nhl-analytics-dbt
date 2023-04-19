@@ -1,3 +1,4 @@
+#!/bin/sh
 echo "Running dbt build:"
 echo ""
 dbt build --profiles-dir .
