@@ -2,13 +2,13 @@
 resource "docker_image" "dbt_model_image" {
   name = "${aws_ecr_repository.dbt_model_image_repo.repository_url}:latest"
   build {
-    context    = "./dbt"
+    context    = "./../dbt"
     dockerfile = "Dockerfile"
   }
   force_remove = true
   triggers ={
-    dockerfile = md5(file("${path.module}/dbt/Dockerfile"))
-    dbt_sh = md5(file("${path.module}/dbt/dbt.sh"))
+    dockerfile = md5(file("${path.module}/../dbt/Dockerfile"))
+    dbt_sh = md5(file("${path.module}/../dbt/dbt.sh"))
   }
 }
 

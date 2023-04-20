@@ -20,7 +20,7 @@ RUN pip install awscli --upgrade
 #Install boto3 for copying files out to s3
 RUN pip install --upgrade pip
 RUN pip install dbt-snowflake==1.4.1
-RUN pip instalxxxl boto3
+RUN pip install boto3
 
 #Ensure all dependenices are installed
 RUN dbt deps
